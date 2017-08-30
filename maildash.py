@@ -12,7 +12,7 @@ app = Flask(__name__)
 mail = Mail(app)
 
 # DB Connector Alchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://mailman:WTFpassword1***@10.209.128.62/maildash'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user:password@host/dd'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
