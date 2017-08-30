@@ -6,9 +6,9 @@ mailboxes = mbx_get('iccenter.org')
 
 #Set Connection Parameters
 connection = MySQLdb.connect(
-            host = '10.209.128.62',
-            user = 'mailman',
-            passwd = 'WTFpassword1***',)
+            host = 'X',
+            user = 'X',
+            passwd = 'X',)
 
 for mbx in mailboxes:
     data = user_get(mbx)
