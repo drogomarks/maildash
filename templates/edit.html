@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if session['logged_in'] %}
+
+{% if success %}
+  <div class="alert alert-dismissible alert-success" style="text-align: center;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ success }}</strong> <br>
+    <strong>{{ username }}@iccenter.org</strong> successfully changed to <strong>{{ new_username }}@iccenter.org</strong>
+  </div>
+{% endif %}
+
+{% if fail %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ fail }}</strong> <br>
+    <a href="/create" class="alert-link">Try again.</a>
+  </div>
+{% endif %}
+
+{% if password_fail %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ password_fail}}</strong> <br>
+    <a href="/create/" class="alert-link">Try again.</a>
+  </div>
+{% endif %}
+
+
+<h2 style="text-align: center;">Edit User</h2>
+<hr>
+<br>
+
+
+<form class="form-horizontal" method="POST" action="/edit/{{ username }}" onsubmit="ShowLoading()">
+  <fieldset>
+    <legend>Editing {{ username }}@iccenter.org:</legend>
+    <div class="form-group">
+
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">New Username:</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="user_name" placeholder="{{ curr_username }}">
+        <span class="help-block"><strong>NOTE:</strong>*This will be the user's @iccenter.org email address. <strong>DO NOT</strong> include @iccenter.org, just the mailbox name you want.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">New Password:</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" name="password1" placeholder="holdthedoor123">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Confirm New Password:</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" name="password2" placeholder="holdthedoor123">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+{% else %}
+
+<div class="jumbotron">
+  <h1>Uh oh. :(</h1>
+  <p>Looks like your not logged in.</p>
+  <p><a href="/" class="btn btn-primary btn-lg">Login to Continue</a></p>
+</div>
+
+{% endif %}
+{% endblock %}

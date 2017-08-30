@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align: center;">Testing Page</h2>
+<hr>
+
+{% for user in users %}
+
+<br>
+User: {{ user.username }}
+<br>
+Date Created: {{ user.date_created }}
+<br>
+Usage: {{ user.usagemb }} MB
+<br>
+{% endfor %}
+
+
+{% endblock %}

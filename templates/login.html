@@ -1,0 +1,63 @@
+{% extends "login_base.html" %}
+{% block content %}
+
+{% if session['logged_in'] %}
+<p>You're logged in already!</p>
+{% else %}
+
+
+{% if fail %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Oh Snap!</strong> <br>
+    {{ fail }}
+  </div>
+{% endif %}
+
+<br><br><br>
+
+	<div class="row">
+		<h1 class="text-center">Please Login to Begin.</h1>
+        <p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Let's go!</a></p>
+	</div>
+</div>
+<!-- END # BOOTSNIP INFO -->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog">
+			<div class="modal-content">
+
+        <div class="modal-header" align="center">
+					<img class="img-circle" id="img_logo" style="width: 30%; height: 50%;" src="http://iccenter.org/wp-content/uploads/2014/03/ICC-Logo.jpg">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+				</div>
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                      <!-- Begin # Login Form -->
+                  <form id="login-form" action="/login" method="POST">
+  		                <div class="modal-body">
+        				    		<div id="div-login-msg">
+                                        <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                        <span id="text-login-msg">Enter username and password.</span>
+                                    </div>
+        				    		<input name="username" class="form-control" type="text" placeholder="Username" required>
+        				    		<input name="password" class="form-control" type="password" placeholder="Password" required>
+          		    	</div>
+    				        <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                                </div>
+    				        </div>
+                  </form>
+                        <!-- End # Login Form -->
+                </div>
+                <!-- End # DIV Form -->
+			</div>
+		</div>
+</div>
+{% endif %}
+
+{% endblock %}

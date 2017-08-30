@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if session['logged_in'] %}
+
+{% if success %}
+  <div class="alert alert-dismissible alert-success" style="text-align: center;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ success }}</strong> <br>
+    <strong>{{ username }}@iccenter.org</strong> successfully created with password: <strong>{{ password1 }}</strong>
+  </div>
+{% endif %}
+
+{% if fail %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Oh Snap!</strong> <br>
+    {{ fail }}
+  </div>
+{% endif %}
+
+{% if password_fail %}
+  <div class="alert alert-dismissible alert-danger">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{ password_fail}}</strong> <br>
+    <a href="/create" class="alert-link">Try again.</a>
+  </div>
+{% endif %}
+
+<br>
+<form class="form-horizontal" method="POST" action="{{ url_for('create_mailbox') }}" onsubmit="ShowLoading()">
+  <fieldset>
+    <legend>Create New Mailbox User:</legend>
+    <div class="form-group">
+      <label class="col-lg-2 control-label">First Name:</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="first_name" placeholder="Hordor">
+         <span class="help-block">First name for email directory</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Last Name:</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="last_name" placeholder="Wylis">
+        <span class="help-block">Last name for email directory</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Display Name:</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="display_name" placeholder="Hordor Wylis">
+        <span class="help-block">The "name" others will see when receiving emails from this user.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Username (required):</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" name="user_name" placeholder="hodorrox">
+        <span class="help-block"><strong>NOTE:</strong>*This will be the user's @iccenter.org email address. <strong>DO NOT</strong> include @iccenter.org, just the mailbox name you want.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password (required):</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" name="password1" placeholder="holdthedoor123">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Confirm Password (required):</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" name="password2" placeholder="holdthedoor123">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+{% else %}
+
+<div class="jumbotron">
+  <h1>Uh oh. :(</h1>
+  <p>Looks like your not logged in.</p>
+  <p><a href="/" class="btn btn-primary btn-lg">Login to Continue</a></p>
+</div>
+{% endif %}
+
+{% endblock %}
