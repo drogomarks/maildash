@@ -5,9 +5,9 @@ import MySQLdb
 def useradd_db(user):
     #Set Connection Parameters
     connection = MySQLdb.connect(
-                host = '10.209.128.62',
-                user = 'mailman',
-                passwd = 'WTFpassword1***',)
+                host = 'X',
+                user = 'X',
+                passwd = 'X',)
 
     data = user_get(user)
     name = data['name']
@@ -28,9 +28,9 @@ def useradd_db(user):
 def userdel_db(user):
     #Set Connection Parameters
     connection = MySQLdb.connect(
-                host = '10.209.128.62',
-                user = 'mailman',
-                passwd = 'WTFpassword1***',)
+                host = 'X',
+                user = 'X',
+                passwd = 'X',)
 
     name = user
     #Establish connection
@@ -44,9 +44,9 @@ def userdel_db(user):
 def user_update_db(user, new_user):
     #Set Connection Parameters
     connection = MySQLdb.connect(
-                host = '10.209.128.62',
-                user = 'mailman',
-                passwd = 'WTFpassword1***',)
+                host = 'X',
+                user = 'X',
+                passwd = 'X',)
 
     #Establish connection
     cursor = connection.cursor()
