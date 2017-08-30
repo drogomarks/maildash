@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 # Set Keys & Set User Agent
-usrkey = 'rzDoJu9igQNFiKTqf6Jr';
-scrtkey = '4U1NpgCLTrOQ/3LHTjFR+XmZNtXeQl5KT0jUankE';
-usr_agent  = 'iccMailDash';
+usrkey = 'X';
+scrtkey = 'X';
+usr_agent  = 'X';
 
 # Set Account Info
-cst_id = '1603052'
-domain = 'iccenter.org'
+cst_id = 'X'
+domain = 'X.X'
 
 # Set Mailbox Type
 mbx_type = 'rs'
